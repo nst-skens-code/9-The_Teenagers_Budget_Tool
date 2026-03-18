@@ -1,0 +1,445 @@
+/* ================================================================
+   ZENITH SPEND — iOS 26 Liquid Glass Design System
+   Inspired by Apple's visionOS / iOS 26 aesthetic
+   Supports: Dark, Light, AMOLED modes
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Nunito:wght@400;600;700;800;900&display=swap');
+
+/* ================================================================
+   DESIGN TOKENS — Default (Dark / iOS 26 Glass)
+   ================================================================ */
+:root {
+  /* ► Brand Palette */
+  --brand-primary:    #a78bfa;
+  --brand-secondary:  #38bdf8;
+  --brand-accent:     #fb923c;
+  --brand-tertiary:   #34d399;
+  --brand-glow:       rgba(167, 139, 250, 0.45);
+  --brand-glow-cyan:  rgba(56, 189, 248, 0.3);
+
+  /* ► Semantic */
+  --success:  #4ade80;
+  --danger:   #f87171;
+  --warning:  #fbbf24;
+  --info:     #60a5fa;
+
+  /* ► Deep Surfaces */
+  --surface-0: #06060f;
+  --surface-1: #0a0a1a;
+  --surface-2: #0f0f22;
+  --surface-3: #14142c;
+
+  /* ► Liquid Glass (the iOS 26 effect) */
+  --glass-1:            rgba(255, 255, 255, 0.032);
+  --glass-2:            rgba(255, 255, 255, 0.065);
+  --glass-3:            rgba(255, 255, 255, 0.10);
+  --glass-4:            rgba(255, 255, 255, 0.15);
+  --glass-border:       rgba(255, 255, 255, 0.10);
+  --glass-border-hover: rgba(167, 139, 250, 0.55);
+  --glass-border-active:rgba(167, 139, 250, 0.85);
+  --glass-blur:         32px;
+  --glass-blur-sm:      16px;
+  --glass-blur-lg:      48px;
+
+  /* ► Text */
+  --text-primary:   #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted:     #475569;
+  --text-dim:       #2d3a4e;
+
+  /* ► Sidebar */
+  --sidebar-bg: rgba(6, 6, 15, 0.88);
+
+  /* ► Gradients */
+  --bg-gradient:
+    radial-gradient(ellipse at 0% 0%, rgba(167, 139, 250, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse at 100% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(251, 146, 60, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 30% 60%, rgba(52, 211, 153, 0.06) 0%, transparent 50%),
+    linear-gradient(160deg, #06060f 0%, #0a0a1a 50%, #06060f 100%);
+
+  /* ► Layout */
+  --sidebar-width:      260px;
+  --header-height:      68px;
+  --border-radius-xs:   6px;
+  --border-radius-sm:   10px;
+  --border-radius-md:   16px;
+  --border-radius-lg:   22px;
+  --border-radius-xl:   32px;
+  --border-radius-pill: 999px;
+
+  /* ► Shadows */
+  --shadow-xs:   0 1px 4px  rgba(0, 0, 0, 0.5);
+  --shadow-sm:   0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-md:   0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-lg:   0 24px 64px rgba(0, 0, 0, 0.7);
+  --shadow-xl:   0 40px 96px rgba(0, 0, 0, 0.8);
+  --shadow-glow: 0 0 48px rgba(167, 139, 250, 0.35), 0 0 96px rgba(167, 139, 250, 0.15);
+  --shadow-glow-sm: 0 0 24px rgba(167, 139, 250, 0.3);
+  --shadow-glow-cyan: 0 0 32px rgba(56, 189, 248, 0.25);
+  --shadow-brand: 0 8px 32px rgba(167, 139, 250, 0.4);
+  --shadow-inner: inset 0 1px 0 rgba(255,255,255,0.08);
+
+  /* ► Transitions */
+  --transition-instant: 0.08s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast:    0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base:    0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:    0.5s  cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring:  0.4s  cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ► Typography */
+  --font-body:  'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-head:  'Space Grotesk', 'Outfit', sans-serif;
+  --font-mono:  'JetBrains Mono', monospace;
+  --font-round: 'Nunito', sans-serif;
+}
+
+/* ================================================================
+   LIGHT THEME — iOS 26 Frosted
+   ================================================================ */
+[data-theme="light"] {
+  --surface-0: #f2f4ff;
+  --surface-1: #e8ecff;
+  --surface-2: #dde3ff;
+  --surface-3: #d2daff;
+  --glass-1:   rgba(255, 255, 255, 0.65);
+  --glass-2:   rgba(255, 255, 255, 0.80);
+  --glass-3:   rgba(255, 255, 255, 0.92);
+  --glass-4:   rgba(255, 255, 255, 0.98);
+  --glass-border:       rgba(139, 92, 246, 0.18);
+  --glass-border-hover: rgba(139, 92, 246, 0.45);
+  --glass-border-active:rgba(139, 92, 246, 0.8);
+  --text-primary:   #0f0f1a;
+  --text-secondary: #4a5568;
+  --text-muted:     #8896a8;
+  --text-dim:       #c1ccd8;
+  --brand-primary:  #7c3aed;
+  --brand-secondary:#0ea5e9;
+  --brand-glow:     rgba(124, 58, 237, 0.2);
+  --sidebar-bg:     rgba(242, 244, 255, 0.9);
+  --shadow-glow:    0 0 40px rgba(124, 58, 237, 0.18), 0 0 80px rgba(124, 58, 237, 0.08);
+  --shadow-brand:   0 8px 32px rgba(124, 58, 237, 0.3);
+  --shadow-inner:   inset 0 1px 0 rgba(255,255,255,0.9);
+  --bg-gradient:
+    radial-gradient(ellipse at 0% 0%, rgba(124, 58, 237, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 100% 0%, rgba(14, 165, 233, 0.08) 0%, transparent 60%),
+    linear-gradient(160deg, #f2f4ff 0%, #e8ecff 100%);
+}
+
+/* ================================================================
+   AMOLED THEME — Pure Black + Neon
+   ================================================================ */
+[data-theme="amoled"] {
+  --surface-0: #000000;
+  --surface-1: #050508;
+  --surface-2: #0a0a0f;
+  --surface-3: #0f0f18;
+  --glass-1:            rgba(255, 255, 255, 0.025);
+  --glass-2:            rgba(255, 255, 255, 0.050);
+  --glass-3:            rgba(255, 255, 255, 0.085);
+  --glass-4:            rgba(255, 255, 255, 0.12);
+  --glass-border:       rgba(167, 139, 250, 0.12);
+  --glass-border-hover: rgba(167, 139, 250, 0.60);
+  --glass-border-active:rgba(167, 139, 250, 1);
+  --brand-primary:    #c084fc;
+  --brand-secondary:  #22d3ee;
+  --brand-glow:       rgba(192, 132, 252, 0.6);
+  --success:  #22c55e;
+  --danger:   #ef4444;
+  --sidebar-bg: rgba(0, 0, 0, 0.95);
+  --shadow-glow: 0 0 60px rgba(192, 132, 252, 0.5), 0 0 120px rgba(192, 132, 252, 0.2);
+  --shadow-brand: 0 8px 32px rgba(192, 132, 252, 0.5);
+  --bg-gradient:
+    radial-gradient(ellipse at 20% 20%, rgba(192, 132, 252, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(34, 211, 238, 0.07) 0%, transparent 55%),
+    linear-gradient(160deg, #000000 0%, #050508 100%);
+}
+
+/* ================================================================
+   RESET & BASE
+   ================================================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-gradient);
+  background-color: var(--surface-0);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background var(--transition-slow), color var(--transition-slow);
+  overflow-x: hidden;
+}
+
+/* ================================================================
+   ANIMATED BACKGROUND ORBS (iOS 26 style ambient glow)
+   ================================================================ */
+body::before {
+  content: '';
+  position: fixed;
+  width: 900px; height: 900px;
+  top: -350px; left: -300px;
+  background: radial-gradient(circle,
+    rgba(167, 139, 250, 0.12) 0%,
+    rgba(167, 139, 250, 0.04) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -2;
+  animation: orbDrift1 20s ease-in-out infinite alternate;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  width: 700px; height: 700px;
+  bottom: -200px; right: -150px;
+  background: radial-gradient(circle,
+    rgba(56, 189, 248, 0.09) 0%,
+    rgba(56, 189, 248, 0.03) 45%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -2;
+  animation: orbDrift2 26s ease-in-out infinite alternate;
+}
+
+/* Third orb for extra depth */
+.orb-3 {
+  position: fixed;
+  width: 500px; height: 500px;
+  top: 40%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle,
+    rgba(251, 146, 60, 0.05) 0%,
+    transparent 65%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -2;
+  animation: orbDrift3 34s ease-in-out infinite alternate;
+}
+
+@keyframes orbDrift1 {
+  0%   { transform: translate(0, 0) scale(1) rotate(0deg); }
+  25%  { transform: translate(60px, -40px) scale(1.08) rotate(5deg); }
+  50%  { transform: translate(-30px, 60px) scale(0.94) rotate(-3deg); }
+  75%  { transform: translate(40px, 30px) scale(1.04) rotate(7deg); }
+  100% { transform: translate(-50px, -20px) scale(1.06) rotate(-5deg); }
+}
+
+@keyframes orbDrift2 {
+  0%   { transform: translate(0, 0) scale(1) rotate(0deg); }
+  33%  { transform: translate(-50px, -60px) scale(1.1) rotate(-8deg); }
+  66%  { transform: translate(40px, 50px) scale(0.92) rotate(5deg); }
+  100% { transform: translate(60px, -40px) scale(1.05) rotate(-3deg); }
+}
+
+@keyframes orbDrift3 {
+  0%   { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  50%  { transform: translate(-55%, -45%) scale(1.3); opacity: 0.7; }
+  100% { transform: translate(-45%, -55%) scale(0.8); opacity: 0.9; }
+}
+
+/* ================================================================
+   LIQUID GLASS CARD (iOS 26 Core Component)
+   ================================================================ */
+.glass {
+  background: var(--glass-2);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%) brightness(1.08);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%) brightness(1.08);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md), var(--shadow-inner);
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base),
+    background var(--transition-base);
+
+  &:hover {
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--shadow-lg), var(--shadow-inner), 0 0 0 1px rgba(167,139,250,0.06);
+  }
+}
+
+/* Deeper glass variant */
+.glass-deep {
+  background: var(--glass-3);
+  backdrop-filter: blur(var(--glass-blur-lg)) saturate(200%) brightness(1.1);
+  -webkit-backdrop-filter: blur(var(--glass-blur-lg)) saturate(200%) brightness(1.1);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg), var(--shadow-inner), var(--shadow-glow-sm);
+}
+
+/* ================================================================
+   SCROLLBAR
+   ================================================================ */
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--brand-primary), var(--brand-secondary));
+  border-radius: 999px;
+  opacity: 0.5;
+}
+::-webkit-scrollbar-thumb:hover { opacity: 1; }
+
+/* ================================================================
+   SELECTION & FOCUS
+   ================================================================ */
+::selection {
+  background: rgba(167, 139, 250, 0.35);
+  color: var(--text-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.2);
+}
+
+/* ================================================================
+   KEYFRAME ANIMATIONS (iOS 26 Expressive)
+   ================================================================ */
+
+/* Entry animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Glow pulse */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: var(--shadow-glow-sm); }
+  50%       { box-shadow: var(--shadow-glow); }
+}
+
+/* Floating */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33%  { transform: translateY(-8px) rotate(1deg); }
+  66%  { transform: translateY(-4px) rotate(-1deg); }
+}
+
+/* Shimmer loading */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* Spin */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Bounce */
+@keyframes bounceIn {
+  0%   { opacity: 0; transform: scale(0.3); }
+  50%  { opacity: 1; transform: scale(1.08); }
+  70%  { transform: scale(0.97); }
+  100% { transform: scale(1); }
+}
+
+/* Ripple */
+@keyframes ripple {
+  0%   { transform: scale(0); opacity: 0.4; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* iOS 26 Liquid Morph */
+@keyframes liquidMorph {
+  0%, 100% { border-radius: 22px; }
+  25%  { border-radius: 28px 16px 30px 18px; }
+  50%  { border-radius: 18px 26px 16px 28px; }
+  75%  { border-radius: 26px 18px 22px 24px; }
+}
+
+/* Number count-up shimmer */
+@keyframes numberGlow {
+  0%, 100% { text-shadow: 0 0 20px rgba(167,139,250,0); }
+  50%       { text-shadow: 0 0 20px rgba(167,139,250,0.6), 0 0 40px rgba(56,189,248,0.3); }
+}
+
+/* ================================================================
+   UTILITY CLASSES
+   ================================================================ */
+.animate-in      { animation: fadeUp 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.animate-scale   { animation: scaleIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.animate-float   { animation: float 6s ease-in-out infinite; }
+.animate-glow    { animation: glowPulse 3s ease-in-out infinite; }
+
+/* Gradient text (used widely for headings) */
+.gradient-text {
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary), var(--brand-accent));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s linear infinite;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Shimmer card loading state */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--glass-1) 25%,
+    var(--glass-3) 50%,
+    var(--glass-1) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s linear infinite;
+}
+
+/* Noise texture overlay (subtle grain for iOS glass) */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  pointer-events: none;
+  opacity: 0.4;
+}
